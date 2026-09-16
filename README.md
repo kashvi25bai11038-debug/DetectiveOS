@@ -1,67 +1,354 @@
-# 🕵️ Detective OS — Interactive Crime Investigation System
+# Detective OS
 
-**Version 2.0.1**  
-**Course:** CSE2006 — Programming in Java  
-**Type:** Desktop Java application / fictional investigation simulator
+### Interactive Crime Investigation & Evidence Analysis
 
-> Detective OS is an educational fictional simulation. It does not perform real-world forensic analysis or make real criminal-investigation conclusions.
+Detective OS is a JavaFX-based educational crime-investigation application designed to demonstrate Java, Object-Oriented Programming, database, I/O, exception-handling, collections, reflection, and multithreading concepts through a fictional investigation workflow.
 
-## What is it?
-Detective OS is a JavaFX investigation console in which a detective can open a case, inspect suspects and evidence, record statements, reconstruct a timeline, run an explainable reasoning engine, perform concurrent analysis, generate reports and make a final accusation.
+The application lets a user authenticate, manage fictional cases, examine suspects and evidence, reconstruct timelines, record statements, run concurrent reasoning analysis, calculate rule-based suspicion scores, record accusations, and generate investigation reports.
 
-## Key features
-- 🔐 Login with SHA-256 password hashing
-- 📁 Case archive + procedural case generation
-- 👤 Suspect, witness and victim domain model
-- 🔎 Evidence locker with validation and duplicate protection
-- 🗣️ Interview/statement log
-- 🕐 Chronological timeline reconstruction
-- 🧠 Explainable suspicion scoring
-- 🧵 Concurrent evidence/timeline/statement analysis
-- 🗄️ JPA + Hibernate persistence
-- 🔌 JDBC analytics
-- 📄 TXT case reports + investigation log
-- 🧪 JUnit tests
-- 🧩 OOP, inheritance, polymorphism, interfaces, enums, collections, exceptions, I/O and synchronization
+> **Educational disclaimer:** Detective OS is a fictional academic simulation. Its suspicion scoring and contradiction analysis are rule-based programming demonstrations and are not real forensic or law-enforcement analysis.
 
-## Tech stack
-- Java 21
-- JavaFX 21
-- Maven 3.9+
-- MySQL 8+
-- Jakarta Persistence API / Hibernate ORM 6
-- JDBC
-- JUnit 5
-- Git/GitHub
+## 1. Objectives
 
-## Run locally
-1. Install JDK 21, Maven and MySQL.
-2. Run `database_setup.sql` in MySQL Workbench.
-3. Open the project folder in IntelliJ.
-4. Run `mvn clean test`.
-5. Run `mvn javafx:run`.
-6. Login with `detective / detective123`.
+- Apply Java OOP concepts in a complete application.
+- Demonstrate encapsulation, inheritance, polymorphism, abstraction, interfaces, and enums.
+- Implement exception handling and input validation.
+- Demonstrate multithreading and synchronization.
+- Use Java I/O for reports and investigation logs.
+- Integrate JDBC and JPA/Hibernate with MySQL.
+- Provide a modular JavaFX interface.
+- Demonstrate testing using JUnit.
+- Maintain the project using Git and GitHub.
 
-Detailed instructions are in `docs/SETUP.md`.
+## 2. Major Functional Modules
 
-## Project structure
+### Authentication & User Management
+- Login and authentication validation.
+- Logout functionality.
+
+### Case Management
+- View existing cases.
+- Generate fictional cases.
+- Start/resume and close investigations.
+- Track case status, difficulty, crime type, victim, and readiness.
+- Protect solved/closed cases from inappropriate modification.
+
+### Suspect Management
+- Search and view suspects.
+- Add suspects.
+- Calculate suspicion scores.
+- Explain score components.
+- Record accusations.
+
+### Evidence Management
+- Add and validate evidence.
+- Store evidence type, reliability, location, description, and related suspect.
+- Detect duplicate evidence codes.
+
+### Timeline Reconstruction
+- Add timeline events.
+- Associate events with people.
+- Display events chronologically.
+- Use timeline information during reasoning.
+
+### Interview & Statement Analysis
+- Record statements.
+- Compare statements with timeline information.
+- Detect rule-based location contradictions.
+
+### Concurrent Reasoning
+- Run evidence, timeline, and statement analysis concurrently.
+- Use synchronization when shared case state is modified.
+- Calculate explainable, rule-based suspicion scores.
+
+### Reports & Analytics
+- Generate case reports.
+- Save reports and investigation logs using Java I/O.
+- Run JDBC analytics.
+- View investigation history.
+
+## 3. Suspicion Scoring
+
+The educational scoring engine considers factors such as:
+
+- documented motive;
+- linked evidence;
+- timeline involvement;
+- statement contradictions.
+
+The resulting score is capped at 100.
+
+## 4. Java Concepts Demonstrated
+
+| Concept | Example |
+|---|---|
+| Classes & Objects | Domain models and services |
+| Encapsulation | Controlled model fields and operations |
+| Inheritance | `Person` → `Suspect`, `Witness`, `Victim` |
+| Abstraction | Abstract `Person` |
+| Polymorphism | Person subclasses and engine/service interactions |
+| Interfaces | `EvidenceAnalyzer` |
+| Enums | Crime, evidence, case status, difficulty, person type |
+| Exception Handling | Custom exceptions and validation |
+| Collections | Lists, sets, maps and repositories |
+| Multithreading | Concurrent analysis tasks |
+| Synchronization | Shared investigation state |
+| Static / Singleton-style management | JPA `EntityManagerFactory` |
+| Reflection | `ReflectionInspector` |
+| File I/O | Reports and investigation logs |
+| JDBC | Analytics queries with prepared statements |
+| JPA / Hibernate | Persistent entities |
+| JUnit 5 | Automated tests |
+
+## 5. Technology Stack
+
+- **Java 21**
+- **JavaFX 21.0.6**
+- **Maven 3.9+**
+- **MySQL 8+**
+- **Jakarta Persistence API 3.1**
+- **Hibernate ORM 6.6.4**
+- **MySQL Connector/J 9.1.0**
+- **JDBC**
+- **JUnit 5.11.4**
+- **Git / GitHub**
+
+## 6. Architecture
+
 ```text
-src/main/java/com/detectiveos
-├── config       # JPA/config/database bootstrap
-├── engine       # reasoning and case generation
-├── exception    # custom exceptions
-├── model        # JPA entities + enums
-├── repository   # persistence layer
-├── service      # business/application services
-├── thread       # concurrent analysis tasks
-├── ui           # JavaFX screens
-└── util         # validation, hashing, reports, reflection
+JavaFX UI
+   |
+Service Layer
+   |
+Reasoning / Engine Layer
+   |---- Evidence Analysis
+   |---- Timeline Analysis
+   |---- Statement Analysis
+   |
+Repository / Persistence Layer
+   |
+MySQL
 ```
 
-## Assessment alignment
-The design intentionally maps the CSE2006 topics to meaningful features. See `docs/SYLLABUS_MAPPING.md` and `docs/PROJECT_SPEC.md`.
+The application is organized into `config`, `engine`, `exception`, `model`, `repository`, `service`, `thread`, `ui`, and `util` packages.
 
-## Important folders
-- `docs/` — architecture, diagrams, setup, testing and viva notes
-- `reports/generated/` — generated case reports after first run
-- `database_setup.sql` — MySQL database/user setup
+## 7. Project Structure
+
+```text
+DetectiveOS/
+├── README.md
+├── statement.md
+├── pom.xml
+├── database_setup.sql
+├── docker-compose.yml
+├── run_windows.bat
+├── run_linux.sh
+├── .gitignore
+├── docs/
+│   ├── DIAGRAMS.md
+│   ├── PROJECT_SPEC.md
+│   ├── REPORT_OUTLINE.md
+│   ├── SETUP.md
+│   ├── SYLLABUS_MAPPING.md
+│   ├── TEST_PLAN.md
+│   ├── VIVA_NOTES.md
+│   └── DetectiveOS_Project_Report_Draft.pdf
+└── src/
+    ├── main/
+    │   ├── java/com/detectiveos/
+    │   └── resources/
+    └── test/
+        └── java/com/detectiveos/
+```
+
+## 8. Requirements
+
+Install:
+
+- JDK 21
+- Maven 3.9+
+- MySQL 8+
+- Git
+
+Verify:
+
+```bash
+java -version
+mvn -version
+```
+
+## 9. Database Setup
+
+Make sure MySQL Server is running and execute `database_setup.sql`.
+
+The local academic/demo configuration uses:
+
+```text
+Database: detective_os
+Username: detective
+Password: detective123
+```
+
+Hibernate/JPA creates and updates the application tables automatically.
+
+Alternatively, if Docker is installed:
+
+```bash
+docker compose up -d
+```
+
+## 10. Run the Project
+
+From the project root:
+
+### Windows
+
+```cmd
+mvn clean test
+mvn javafx:run
+```
+
+or:
+
+```cmd
+run_windows.bat
+```
+
+### Linux / macOS
+
+```bash
+mvn clean test
+mvn javafx:run
+```
+
+The included Linux script can also be used:
+
+```bash
+./run_linux.sh
+```
+
+## 11. Demo Login
+
+```text
+Username: detective
+Password: detective123
+```
+
+These are demo/local credentials for the academic database.
+
+## 12. Recommended Demonstration Workflow
+
+```text
+Login
+  ↓
+Select / Generate Case
+  ↓
+Start Investigation
+  ↓
+Review Case Dossier
+  ↓
+Inspect Suspects
+  ↓
+Review Evidence
+  ↓
+Reconstruct Timeline
+  ↓
+Record / Review Statements
+  ↓
+Run Concurrent Analysis
+  ↓
+Recalculate Suspicion Scores
+  ↓
+Explain Selected Suspect
+  ↓
+Make an Accusation
+  ↓
+Generate Case Report
+  ↓
+Review Analytics / History
+```
+
+The seeded **Blackwood Mansion Affair** demonstrates evidence, timeline, statement contradiction, concurrent analysis, and explainable suspicion scoring.
+
+## 13. Testing
+
+Run:
+
+```bash
+mvn clean test
+```
+
+Automated tests currently cover suspicion scoring and input validation. The manual test plan in `docs/TEST_PLAN.md` additionally covers login, case management, evidence validation, duplicate evidence, timeline handling, contradiction detection, concurrent reasoning, suspicion explanations, accusations, closed-case protection, report generation, and JDBC analytics.
+
+### Verified Build Result
+
+The project was tested with Maven and produced:
+
+```text
+Tests run: 4
+Failures: 0
+Errors: 0
+Skipped: 0
+BUILD SUCCESS
+```
+
+## 14. Screenshots
+
+Screenshots are recommended for the final academic submission.
+
+Suggested screenshots:
+
+1. Login screen
+2. Dashboard / Case Dossier
+3. Suspect management
+4. Suspicion scores
+5. Suspicion explanation
+6. Evidence management
+7. Timeline
+8. Interviews / contradiction analysis
+9. Reasoning
+10. Reports / analytics
+
+Use screenshots from your own running application.
+
+## 15. Documentation
+
+The `docs/` directory contains:
+
+- `PROJECT_SPEC.md` — project specification
+- `DIAGRAMS.md` — design diagrams
+- `SETUP.md` — setup reference
+- `SYLLABUS_MAPPING.md` — Java syllabus mapping
+- `TEST_PLAN.md` — testing plan
+- `VIVA_NOTES.md` — viva preparation
+- `REPORT_OUTLINE.md` — report structure
+- `DetectiveOS_Project_Report_Draft.pdf` — report draft
+
+## 16. Git Workflow
+
+```bash
+git status
+git add .
+git commit -m "Describe your changes"
+git push
+```
+
+## 17. Academic Alignment
+
+Detective OS is developed for **CSE2006 – Programming in Java** and integrates Java OOP, exception handling, collections, multithreading/synchronization, I/O, JDBC, JPA/Hibernate, modular design, and testing.
+
+## 18. Future Enhancements
+
+- Role-based access control.
+- Richer evidence visualization.
+- Configurable investigation rules.
+- Expanded automated test coverage.
+- Advanced timeline visualization.
+- Additional case-generation scenarios.
+- PDF report export.
+- Environment-variable based database configuration.
+- Database migration/versioning.
+
+## 19. Academic Use
+
+This project is developed for academic demonstration and evaluation.
