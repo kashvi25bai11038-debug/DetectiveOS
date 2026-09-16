@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: detective-os-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: detective_os
+      MYSQL_USER: detective
+      MYSQL_PASSWORD: detective123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3306:3306"
+    volumes:
+      - detective_os_mysql:/var/lib/mysql
+volumes:
+  detective_os_mysql:
