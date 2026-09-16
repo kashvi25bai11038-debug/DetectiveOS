@@ -293,23 +293,37 @@ BUILD SUCCESS
 ```
 
 ## 14. Screenshots
+The following screenshots demonstrate the major functional modules of Detective OS during execution.
 
-Screenshots are recommended for the final academic submission.
+### 14.1 Login Screen
+![Detective OS Login Screen](screenshots/01_Login.png)
 
-Suggested screenshots:
+### 14.2 Dashboard / Case Dossier
+![Detective OS Dashboard](screenshots/02_Dashboard.png)
 
-1. Login screen
-2. Dashboard / Case Dossier
-3. Suspect management
-4. Suspicion scores
-5. Suspicion explanation
-6. Evidence management
-7. Timeline
-8. Interviews / contradiction analysis
-9. Reasoning
-10. Reports / analytics
+### 14.3 Suspect Management and Analysis
+![Suspect Management and Analysis](screenshots/03_Suspect_Analysis.png)
 
-Use screenshots from your own running application.
+### 14.4 Suspicion Score Explanation
+![Suspicion Score Explanation](screenshots/04_Score_Explanation.png)
+
+### 14.5 Evidence Management
+![Evidence Management](screenshots/05_Evidence.png)
+
+### 14.6 Timeline Reconstruction
+![Timeline Reconstruction](screenshots/06_Timeline.png)
+
+### 14.7 Interviews and Contradiction Analysis
+![Interviews and Contradiction Analysis](screenshots/07_Interviews.png)
+
+### 14.8 Reasoning Analysis
+![Reasoning Analysis](screenshots/08_Reasoning.png)
+
+### 14.9 Reports and Analytics
+![Reports and Analytics](screenshots/09_Reports.png)
+
+### 14.10 Automated Test Results
+![Automated Test Results](screenshots/10_Test_Results.png)
 
 ## 15. Documentation
 
